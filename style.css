@@ -14,6 +14,7 @@
 a {
     color: white;
     text-decoration: none;
+    cursor: none;
 }
 
 body {
@@ -66,7 +67,7 @@ li {
     margin: 0 0 8px 0;
     background-color: var(--color-prymary);
     width: 47%;
-    padding: 4px;
+    padding: 4px 6px;
     border-radius: 8px;
     display: flex;
     align-items: center;

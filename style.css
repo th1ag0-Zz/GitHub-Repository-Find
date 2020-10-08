@@ -14,7 +14,7 @@
 a {
     color: white;
     text-decoration: none;
-    cursor: none;
+    cursor: auto;
 }
 
 body {
@@ -65,14 +65,13 @@ ul {
 li {
     list-style: none;
     margin: 0 0 8px 0;
-    background-color: var(--color-prymary);
+    background-color: var(--color-bg-light);
     width: 47%;
-    padding: 4px 6px;
+    padding: 6px;
     border-radius: 8px;
     display: flex;
     align-items: center;
     justify-content: center;
-
 }
 
 .box-user {
@@ -116,6 +115,10 @@ li {
 
 @media (min-width: 580px) {
     button {
+        cursor: pointer;
+    }
+
+    a {
         cursor: pointer;
     }
 }

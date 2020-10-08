@@ -38,6 +38,8 @@ function getName() {
                 .then( (response) => {
 
                     console.log(response)
+                    var linkPerfil = document.querySelector('.container-img a')
+                    linkPerfil.setAttribute('href', 'http://github.com/'+user)
                     var imgBox = document.querySelector('.img-user')
                     imgBox.style.backgroundImage = "url("+response.data.avatar_url+")"
                     var name = document.querySelector('.name')
@@ -46,10 +48,9 @@ function getName() {
                     var seguindo = document.querySelector('.container-info .seguindo')
                     
                     name.innerText = response.data.name
-                    repo.innerText = 'Repositórios: ' + numRepo
-                    seguidores.innerText = 'Seguidores: ' + response.data.followers
-                    seguindo.textContent = 'Seguindo: ' + response.data.following
-
+                    repo.innerHTML =  'Repositórios: '+'<span style="color: #21cf33">'+numRepo+'</span>'
+                    seguidores.innerHTML = 'Seguidores: '+'<span style="color: #21cf33">'+response.data.followers+'</span>' 
+                    seguindo.innerHTML = 'Seguindo: ' + '<span style="color: #21cf33">'+response.data.following+'</span>' 
                 })
                 .catch( (error) => {
                     console.log(error)

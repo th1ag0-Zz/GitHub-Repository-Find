@@ -1,3 +1,9 @@
+:root {
+    --color-prymary: #8257E5;
+    --color-bg: #121214;
+    --color-bg-light: #1f1f24;
+}
+
 * {
     margin: 0;
     padding: 0;
@@ -5,11 +11,17 @@
     font-family: 'Roboto', sans-serif;
 }
 
+a {
+    color: white;
+    text-decoration: none;
+}
+
 body {
-    background-color: #121214;
+    background-color: var(--color-bg);
     text-align: center;
     color: white;
     text-align: center;
+    padding: 0 4%;
 }
 
 body h3 {
@@ -18,7 +30,8 @@ body h3 {
 }
 
 .container {
-    margin-top: 25px;
+    margin: 25px auto 0 auto;
+    max-width: 500px;
 }
 
 input {
@@ -31,7 +44,7 @@ input {
 }
 
 button {
-    background-color: #8257E5;
+    background-color: var(--color-prymary);
     color: white;
     font-weight: bold;
     border: none;
@@ -41,8 +54,63 @@ button {
     outline: 0;
 }
 
+ul {
+    margin-top: 25px;
+    display: flex;
+    flex-wrap: wrap;
+    justify-content: space-between;
+}
+
 li {
-    margin-bottom: 8px;
+    list-style: none;
+    margin: 0 0 8px 0;
+    background-color: var(--color-prymary);
+    width: 47%;
+    padding: 4px 0;
+    border-radius: 8px;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+
+}
+
+.box-user {
+    display: none;
+    justify-content: space-between;
+}
+
+.box-user .container-img {
+    width: 47%;
+    height: auto;
+    background-color: var(--color-bg-light);
+    padding: 8px 0;
+    border-radius: 8px;
+}
+
+.box-user .container-info {
+    width: 47%;
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+}
+
+.box-user .container-info p {
+    text-align: left;
+    margin: 5px 0;
+    font-weight: 500;
+}
+
+.img-user {
+    border-radius: 50%;
+    width: 75%;
+    padding-top: 75%;
+    margin: 0 auto;
+    background-size: 100% 100%;
+}
+
+.name {
+    margin-top: 8px;
+    font-weight: 500;
 }
 
 @media (min-width: 580px) {

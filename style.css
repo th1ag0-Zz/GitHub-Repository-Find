@@ -8,7 +8,7 @@
     margin: 0;
     padding: 0;
     box-sizing: border-box;
-    font-family: 'Roboto', sans-serif;
+    font-family: 'poppins', sans-serif;
 }
 
 a {
@@ -55,7 +55,7 @@ button {
     outline: 0;
 }
 
-ul {
+.ul {
     margin-top: 25px;
     display: flex;
     flex-wrap: wrap;

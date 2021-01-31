@@ -7,13 +7,14 @@
         <link rel="stylesheet" href="style.css">
         <title>Hi there</title>
     </head>
-    <body>
+    <body">
 
         <h3>GitHub Repository Find</h3>
 
         <div class="container">
             <input id="user" type="text" placeholder="User do github xD">
-            <button onclick="getName()">Search</button>
+            <button onclick="RenderizeInfo()">Search</button>
+            <p class="loading"></p>
             
             <div class="box-user">
                 <div class="container-img">
@@ -28,10 +29,13 @@
                     <p class="seguidores"></p>
                     <p class="seguindo"></p>
                 </div>
+
             </div>
+            <ul class="ul">
+
+            </ul>
         </div>
         
-        <script src="https://unpkg.com/axios/dist/axios.min.js"></script>
         <script src="script.js"></script>
 
     </body>

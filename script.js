@@ -1,67 +1,50 @@
-const container = document.querySelector('.container')
-const textLoadingElement = document.createElement('p')
-const ul = document.createElement('ul')
-container.appendChild(textLoadingElement)
+const input = document.querySelector('#user');
+const loading = document.querySelector('.loading')
 
-function getName() {
-
-    container.appendChild(ul)
-    const listLength = document.querySelectorAll('.container ul li')
-
-    for (var i = 0; i < listLength.length; i++) {
-        ul.removeChild(listLength[i])
-    }
-
-    var user = document.querySelector('#user').value
-    textLoadingElement.innerText = 'Carregando...'
-
-    // requisição dos repositórios
-    axios.get('https://api.github.com/users/'+user+'/repos')
-        .then( (response) => {
-            var boxUser = document.querySelector('.box-user')
-            boxUser.style.display = 'flex'
-            textLoadingElement.innerText = ''
-            
-            for (var i = 0; i < response.data.length; i++) {
-                var list = document.createElement('li')
-                var linkList = document.createElement('a')
-                linkList.setAttribute('href', response.data[i].svn_url)
-                linkList.setAttribute('target', '__blank')
-                linkList.innerText = response.data[i].name
-                //list.innerText = response.data[i].name
-                list.appendChild(linkList)
-                ul.appendChild(list)
-            }
-            var numRepo = document.querySelectorAll('ul li').length
-
-            axios.get('https://api.github.com/users/'+user)
-                .then( (response) => {
-
-                    console.log(response)
-                    var linkPerfil = document.querySelector('.container-img a')
-                    linkPerfil.setAttribute('href', 'http://github.com/'+user)
-                    var imgBox = document.querySelector('.img-user')
-                    imgBox.style.backgroundImage = "url("+response.data.avatar_url+")"
-                    var name = document.querySelector('.name')
-                    var repo = document.querySelector('.container-info .repo')
-                    var seguidores = document.querySelector('.container-info .seguidores')
-                    var seguindo = document.querySelector('.container-info .seguindo')
-                    
-                    name.innerText = response.data.name
-                    repo.innerHTML =  'Repositórios: '+'<span style="color: #21cf33">'+numRepo+'</span>'
-                    seguidores.innerHTML = 'Seguidores: '+'<span style="color: #21cf33">'+response.data.followers+'</span>' 
-                    seguindo.innerHTML = 'Seguindo: ' + '<span style="color: #21cf33">'+response.data.following+'</span>' 
-                })
-                .catch( (error) => {
-                    console.log(error)
-                })
-            
-        })
-        .catch( (error) => {
-            textLoadingElement.innerText = 'Algo deu errado ;-;'
-            console.warn(error)
-        })
-
-    // requisição do perfil
+async function RenderizeInfo(){
+try{
+    loading.innerText = `Carregando...`;
+    const container = document.querySelector('.container')
+    const inputUser = input.value
     
+
+    let ul = document.querySelector('.ul')
+    let inputRepo = input.value;
+    
+    let url = await fetch(`https://api.github.com/users/${inputRepo}/repos`);
+    let repositories = await url.json();
+    
+    ul.innerHTML = repositories.map((repository) => 
+        `<li>
+            <a href="${repository.svn_url}">${repository.name}</a>
+        </li>`
+    ).join('')
+    
+    //---------------------------// 
+
+    let numRepo = repositories.length
+
+    const response = await fetch(`https://api.github.com/users/${inputUser}`);
+    const user = await response.json()
+    let boxUser = document.querySelector('.box-user')
+    
+    let name = document.querySelector('.name')
+    let repo = document.querySelector('.container-info .repo')
+    let seguidores = document.querySelector('.container-info .seguidores')
+    let seguindo = document.querySelector('.container-info .seguindo')
+    let imgUser = document.querySelector('.img-user');
+    imgUser.style.backgroundImage = `url(${user.avatar_url})`
+    
+    boxUser.style.display = 'flex';
+    name.innerHTML = `Nome: <span style="color:#21cf33;">${user.name}</span>`;
+    
+    repo.innerHTML = `Repositórios: <span style="color:#21cf33;">${numRepo}</span>`;
+    seguidores.innerHTML = `Seguidores: <span style="color:#21cf33;">${user.followers}</span>`
+    seguindo.innerHTML = `Seguindo: <span style="color:#21cf33;">${user.following}</span>`
+}catch(err){
+    loading.innerText = `Ops... Parece que o usuário não existe.`;    
+    throw new Error(err)
+}
+loading.innerText = ``;
+input.value = ``;
 }

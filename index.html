@@ -1,42 +1,48 @@
 <!DOCTYPE html>
 <html lang="pt_br">
-    <head>
-        <meta charset="UTF-8">
-        <meta name="viewport" content="width=device-width, initial-scale=1.0">
-        <link href="https://fonts.googleapis.com/css2?family=Roboto:wght@300;400;500;700&display=swap" rel="stylesheet">
-        <link rel="stylesheet" href="style.css">
-        <title>Hi there</title>
-    </head>
-    <body>
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <link
+      href="https://fonts.googleapis.com/css2?family=Roboto:wght@300;400;500;700&display=swap"
+      rel="stylesheet"
+    />
+    <link rel="stylesheet" href="style.css" />
+    <title>Repository Find</title>
+  </head>
+  <body>
+    <h3>GitHub Repository Find</h3>
 
-        <h3>GitHub Repository Find</h3>
+    <div class="container">
+      <input
+        autocomplete="off"
+        id="user"
+        type="text"
+        placeholder="User do github xD"
+      />
+      <button onclick="RenderizeInfo()">Search</button>
+      <p class="loading"></p>
 
-        <div class="container">
-            <input id="user" type="text" placeholder="User do github xD">
-            <button onclick="RenderizeInfo()">Search</button>
-            <p class="loading"></p>
-            
-            <div class="box-user">
-                <div class="container-img">
-                    <a href="" target="_blank">
-                        <div class="img-user"></div>
-                        <p class="name"></p>
-                    </a>
-                </div>
-                <div class="container-info">
-                    
-                    <p class="repo"></p>
-                    <p class="seguidores"></p>
-                    <p class="seguindo"></p>
-                </div>
-
-            </div>
-            <ul class="ul">
-
-            </ul>
+      <div class="box-user">
+        <div class="container-img">
+          <a class="github-link" href="" target="_blank">
+            <div class="img-user"></div>
+            <p class="name"></p>
+          </a>
         </div>
-        
-        <script src="script.js"></script>
+        <div class="container-info">
+          <p class="repo"></p>
+          <p class="seguidores"></p>
+          <p class="seguindo"></p>
+        </div>
+      </div>
 
-    </body>
+      <ul class="ul"></ul>
+
+      <button class="show-more" type="button">Mostrar mais...</button>
+
+    </div>
+
+    <script src="script.js"></script>
+  </body>
 </html>
